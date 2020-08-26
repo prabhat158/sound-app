@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PreviewActivity">
+
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:id="@+id/playerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:use_controller="false"
+        android:layout_above="@+id/recylerview"
+        />
+
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="10dp"
+        android:scaleType="fitCenter"
+        android:padding="3dp"
+        android:id="@+id/Goback"
+        android:src="@drawable/ic_back"
+        android:background="@color/transparent"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/next_btn"
+        android:layout_above="@+id/recylerview"
+        android:textColor="@color/white"
+        android:background="@color/redcolor"
+        android:layout_alignParentRight="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:paddingTop="10dp"
+        android:paddingBottom="20dp"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:layout_marginBottom="65dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/delete_btn"
+        android:layout_above="@+id/recylerview"
+        android:textColor="@color/white"
+        android:background="@color/redcolor"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cut"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/cut_btn"
+        android:layout_above="@+id/recylerview"
+        android:textColor="@color/white"
+        android:background="@color/redcolor"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/recylerview"
+        android:layout_alignParentBottom="true">
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="20dp">
+            <SeekBar
+                android:id="@+id/seekBar"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_below="@id/recylerview"
+                android:progressDrawable="@drawable/seek_bar"
+                android:thumb="@drawable/seek_thumb"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="10px"
+                android:paddingRight="10px"
+                android:id="@+id/LinearLayout">
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:id="@+id/frameimage"-->
+<!--                    android:padding="2px"/>-->
+            </LinearLayout>
+        </LinearLayout>
+        </HorizontalScrollView>
+    </LinearLayout>
+
+
+
+</RelativeLayout>

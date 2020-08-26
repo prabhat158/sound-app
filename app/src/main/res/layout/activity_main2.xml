@@ -60,6 +60,35 @@
 
         </LinearLayout>
 
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_margin="5dp">
+
+            <com.example.ffmpegandroid.SegmentedProgressBar
+                android:id="@+id/video_progress"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_centerVertical="true"
+                android:background="@color/fifty_transparent_black"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/timer_txt"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:text="0 S"
+                android:textSize="13dp"
+                android:id="@+id/timer_txt"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"/>
+
+        </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"

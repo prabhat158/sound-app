@@ -46,7 +46,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MainActivity2 extends AppCompatActivity  implements View.OnClickListener {
+public class MainActivity2 extends AppCompatActivity implements View.OnClickListener {
 
 
     CameraView cameraView;
@@ -62,7 +62,7 @@ public class MainActivity2 extends AppCompatActivity  implements View.OnClickLis
 
     ImageButton flash_btn;
 
-//    SegmentedProgressBar video_progress;
+    SegmentedProgressBar video_progress;
 
     LinearLayout camera_options;
 
@@ -83,8 +83,8 @@ public class MainActivity2 extends AppCompatActivity  implements View.OnClickLis
         setContentView(R.layout.activity_main2);
 
 
-//        Variables.Selected_sound_id="null";
-//        Variables.recording_duration=Variables.max_recording_duration;
+        Variables.Selected_sound_id="null";
+        Variables.recording_duration=Variables.max_recording_duration;
 
 
 
@@ -128,17 +128,17 @@ public class MainActivity2 extends AppCompatActivity  implements View.OnClickLis
         flash_btn.setOnClickListener(this);
 
 //        findViewById(R.id.Goback).setOnClickListener(this);
-//
+
 //        add_sound_txt=findViewById(R.id.add_sound_txt);
 //        add_sound_txt.setOnClickListener(this);
 
 
-//        Intent intent=getIntent();
-//        if(intent.hasExtra("sound_name")){
+        Intent intent=getIntent();
+        if(intent.hasExtra("sound_name")){
 //            add_sound_txt.setText(intent.getStringExtra("sound_name"));
-//            Variables.Selected_sound_id=intent.getStringExtra("sound_id");
-//            PreparedAudio();
-//        }
+            Variables.Selected_sound_id=intent.getStringExtra("sound_id");
+            PreparedAudio();
+        }
 
 
 
@@ -181,34 +181,34 @@ public class MainActivity2 extends AppCompatActivity  implements View.OnClickLis
 
 
 
-//        initlize_Video_progress();
+        initlize_Video_progress();
 
 
 
     }
 
 
-//    public void initlize_Video_progress(){
-//        sec_passed=0;
-//        video_progress=findViewById(R.id.video_progress);
-//        video_progress.enableAutoProgressView(Variables.recording_duration);
-//        video_progress.setDividerColor(Color.WHITE);
-//        video_progress.setDividerEnabled(true);
-//        video_progress.setDividerWidth(4);
-//        video_progress.setShader(new int[]{Color.CYAN, Color.CYAN, Color.CYAN});
-//
-//        video_progress.SetListener(new ProgressBarListener() {
-//            @Override
-//            public void TimeinMill(long mills) {
-//                sec_passed = (int) (mills/1000);
-//
-//                if(sec_passed>(Variables.recording_duration/1000)){
-//                    Start_or_Stop_Recording();
-//                }
-//
-//            }
-//        });
-//    }
+    public void initlize_Video_progress(){
+        sec_passed=0;
+        video_progress=findViewById(R.id.video_progress);
+        video_progress.enableAutoProgressView(Variables.recording_duration);
+        video_progress.setDividerColor(Color.WHITE);
+        video_progress.setDividerEnabled(true);
+        video_progress.setDividerWidth(4);
+        video_progress.setShader(new int[]{Color.CYAN, Color.CYAN, Color.CYAN});
+
+        video_progress.SetListener(new ProgressBarListener() {
+            @Override
+            public void TimeinMill(long mills) {
+                sec_passed = (int) (mills/1000);
+
+                if(sec_passed>(Variables.recording_duration/1000)){
+                    Start_or_Stop_Recording();
+                }
+
+            }
+        });
+    }
 
 
     // if the Recording is stop then it we start the recording
@@ -230,7 +230,7 @@ public class MainActivity2 extends AppCompatActivity  implements View.OnClickLis
 
 
 
-//            video_progress.resume();
+            video_progress.resume();
 
 
             done_btn.setBackgroundResource(R.drawable.ic_not_done);
@@ -248,8 +248,8 @@ public class MainActivity2 extends AppCompatActivity  implements View.OnClickLis
 
             is_recording=false;
 
-//            video_progress.pause();
-//            video_progress.addDivider();
+            video_progress.pause();
+            video_progress.addDivider();
 
             if(audio!=null)
                 audio.pause();
@@ -257,7 +257,7 @@ public class MainActivity2 extends AppCompatActivity  implements View.OnClickLis
             cameraView.stopVideo();
 
 
-            if(sec_passed>((Variables.recording_duration/1000)/3)) {
+            if(sec_passed>((Variables.recording_duration/1000)/18)) {
                 done_btn.setBackgroundResource(R.drawable.ic_done);
                 done_btn.setEnabled(true);
             }
@@ -417,11 +417,11 @@ public class MainActivity2 extends AppCompatActivity  implements View.OnClickLis
                 RotateCamera();
                 break;
 
-//            case R.id.upload_layout:
+            case R.id.upload_layout:
 //                Intent upload_intent=new Intent(this, GalleryVideos_A.class);
 //                startActivity(upload_intent);
 //                overridePendingTransition(R.anim.in_from_bottom,R.anim.out_to_top);
-//                break;
+                break;
 
             case R.id.done:
                 append();
@@ -449,7 +449,7 @@ public class MainActivity2 extends AppCompatActivity  implements View.OnClickLis
 //            case R.id.Goback:
 //                onBackPressed();
 //                break;
-//
+
 //            case R.id.add_sound_txt:
 //                Intent intent =new Intent(this,SoundList_Main_A.class);
 //                startActivityForResult(intent,Sounds_list_Request_code);
@@ -462,22 +462,22 @@ public class MainActivity2 extends AppCompatActivity  implements View.OnClickLis
     }
 
 
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if(requestCode==Sounds_list_Request_code){
-//            if(data!=null){
-//
-//                if(data.getStringExtra("isSelected").equals("yes")){
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==Sounds_list_Request_code){
+            if(data!=null){
+
+                if(data.getStringExtra("isSelected").equals("yes")){
 //                    add_sound_txt.setText(data.getStringExtra("sound_name"));
-//                    Variables.Selected_sound_id=data.getStringExtra("sound_id");
-//                    PreparedAudio();
-//                }
-//
-//            }
-//
-//        }
-//    }
+                    Variables.Selected_sound_id=data.getStringExtra("sound_id");
+                    PreparedAudio();
+                }
+
+            }
+
+        }
+    }
 
 
 
@@ -501,7 +501,7 @@ public class MainActivity2 extends AppCompatActivity  implements View.OnClickLis
 
             if(file_duration<Variables.max_recording_duration){
                 Variables.recording_duration=file_duration;
-//                initlize_Video_progress();
+                initlize_Video_progress();
             }
 
         }
@@ -568,7 +568,7 @@ public class MainActivity2 extends AppCompatActivity  implements View.OnClickLis
 
 
     public void Go_To_preview_Activity(){
-        Intent intent =new Intent(this,MainActivity2.class);
+        Intent intent =new Intent(this,PreviewActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.in_from_right, R.anim.out_to_left);
     }
